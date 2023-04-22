@@ -5,6 +5,10 @@
 		"name": "Oleksandr Hridin",
 		"email": "oleksandr.hridin@gmail.com"
 	},
+	"engines": {
+		"npm": ">=8.19.3",
+		"node": ">=18.13.0"
+	},
 	"license": "ISC",
 	"version": "0.1.0",
 	"private": true,
