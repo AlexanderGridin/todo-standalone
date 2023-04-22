@@ -1,4 +1,4 @@
-# Electron + React app template
+# TODO standalone app
 
 React app was initialized using `create-react-app`
 
