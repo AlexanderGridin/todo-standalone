@@ -1,11 +1,22 @@
+import { useEffect } from "react";
+import { Page } from "./components/Page";
+import { initAsync } from "./services";
+import { toWayTestAsync } from "./services/toWayTest";
+
 function App() {
-	return (
-		<div className="App">
-			<header className="App-header">
-				<h1>Hello from Electron React App!</h1>
-			</header>
-		</div>
-	);
+	const init = async () => {
+		const initMessage = await initAsync();
+		console.log(initMessage);
+
+		const rendererMessage = "Renderer message";
+		console.log(rendererMessage);
+		const mainMessage = await toWayTestAsync(rendererMessage);
+		console.log(mainMessage);
+	};
+	useEffect(() => {
+		init();
+	}, []);
+	return <Page title="Projects" />;
 }
 
 export default App;
