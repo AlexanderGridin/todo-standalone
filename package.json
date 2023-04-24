@@ -24,6 +24,10 @@
 	},
 	"dependencies": {
 		"@alexandergridin/rtc-components-lib": "npm:@AlexanderGridin/rtc-components-lib@^0.0.3",
+		"@emotion/react": "^11.10.6",
+		"@emotion/styled": "^11.10.6",
+		"@mui/icons-material": "^5.11.16",
+		"@mui/material": "^5.12.1",
 		"@testing-library/jest-dom": "^5.16.5",
 		"@testing-library/react": "^13.4.0",
 		"@testing-library/user-event": "^13.5.0",
@@ -43,7 +47,7 @@
 		"react:dev": "react-scripts start",
 		"react:build": "react-scripts build",
 		"test": "react-scripts test",
-		"electron:dev": "wait-on tcp:3000 && electron .",
+		"electron:dev": "wait-on tcp:3000 && electronmon .",
 		"dev": "concurrently -k \"BROWSER=none npm run react:dev\" \"npm run electron:dev\"",
 		"electron:package:mac": "npm run react:build && electron-builder -m -c.extraMetadata.main=build/electron.js",
 		"electron:package:win": "npm run react:build && electron-builder -w -c.extraMetadata.main=build/electron.js",
@@ -80,6 +84,7 @@
 		"concurrently": "^8.0.1",
 		"electron": "^24.1.2",
 		"electron-builder": "^23.6.0",
+		"electronmon": "^2.0.2",
 		"prettier": "^2.8.7",
 		"wait-on": "^7.0.1"
 	}
