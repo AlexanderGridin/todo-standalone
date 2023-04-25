@@ -1,7 +1,8 @@
 import { useEffect } from "react";
-import { Page } from "./components/Page";
-import { initAsync } from "./services";
-import { toWayTestAsync } from "./services/toWayTest";
+
+import { ProjectsPage } from "pages/ProjectsPage";
+import { initAsync } from "services";
+import { toWayTestAsync } from "services/toWayTest";
 
 function App() {
 	const init = async () => {
@@ -13,10 +14,12 @@ function App() {
 		const mainMessage = await toWayTestAsync(rendererMessage);
 		console.log(mainMessage);
 	};
+
 	useEffect(() => {
 		init();
 	}, []);
-	return <Page title="Projects" />;
+
+	return <ProjectsPage />;
 }
 
 export default App;
