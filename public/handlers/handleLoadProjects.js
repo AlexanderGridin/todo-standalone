@@ -1,16 +1,18 @@
 const { readdirSync, readFileSync } = require("fs");
-const { getAppDataFolder } = require("../utils/getAppDataFolder");
+const { getProjectsDataFolder } = require("../utils/getProjectsDataFolder");
 
 const handleLoadProjects = () => {
-	const dataFolderPath = getAppDataFolder();
+	const dataFolderPath = getProjectsDataFolder();
 	const projectsFileNames = readdirSync(dataFolderPath);
 
-	return projectsFileNames.map((fileName) => {
+	const projects = projectsFileNames.map((fileName) => {
 		const filePath = `${dataFolderPath}/${fileName}`;
 		const content = readFileSync(filePath, { encoding: "utf8" });
 
 		return JSON.parse(content);
 	});
+
+	return projects.sort((a, b) => a.createdTime - b.createdTime);
 };
 
 module.exports = {

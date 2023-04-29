@@ -5,4 +5,9 @@ import { AppAction } from "./AppAction";
 export interface AppState {
 	projects: Project[];
 	dispatch: Dispatch<AppAction>;
+	modalMap: {
+		[name: string]: {
+			isOpen: boolean;
+		};
+	};
 }

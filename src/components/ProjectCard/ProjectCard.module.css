@@ -3,3 +3,11 @@
 	justify-content: space-between;
 	align-items: center;
 }
+
+.created {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	color: #3b4252;
+	opacity: 0.3;
+}
