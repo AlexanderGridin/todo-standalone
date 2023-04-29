@@ -1,5 +1,5 @@
 const { existsSync, rmSync } = require("fs");
-const { getProjectsDataFolder } = require("../utils/getProjectsDataFolder");
+const { getProjectsDataFolder } = require("../../../utils/getProjectsDataFolder");
 
 const handleRemoveProject = (_e, project) => {
   const dataFolderPath = getProjectsDataFolder();

@@ -2,13 +2,13 @@ const path = require("path");
 
 const { app, BrowserWindow } = require("electron");
 const isDev = require("electron-is-dev");
-const { initCrossProcessCommunication } = require("./communication");
+const { initIpc } = require("./ipc/initIpc");
 
 const devUrl = "http://localhost:3000";
-const prodUrl = `file://${path.join(__dirname, "index.html")}`;
+const prodUrl = `file://${path.join(__dirname, "../index.html")}`;
 
 const createWindow = () => {
-  initCrossProcessCommunication();
+  initIpc();
 
   const window = new BrowserWindow({
     width: 800,

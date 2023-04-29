@@ -1,5 +1,5 @@
 const { existsSync, writeFileSync } = require("fs");
-const { getProjectsDataFolder } = require("../utils/getProjectsDataFolder");
+const { getProjectsDataFolder } = require("../../../utils/getProjectsDataFolder");
 
 const handleUpdateProject = (_e, project) => {
   const dataFolderPath = getProjectsDataFolder();

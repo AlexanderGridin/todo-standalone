@@ -1,6 +1,7 @@
 const { existsSync, mkdirSync } = require("fs");
-const { getAppDataFolder } = require("../utils/getAppDataFolder");
-const { getProjectsDataFolder } = require("../utils/getProjectsDataFolder");
+
+const { getAppDataFolder } = require("../../utils/getAppDataFolder");
+const { getProjectsDataFolder } = require("../../utils/getProjectsDataFolder");
 
 const handleInit = () => {
   const path = getAppDataFolder();

@@ -1,5 +1,5 @@
 const { readdirSync, readFileSync } = require("fs");
-const { getProjectsDataFolder } = require("../utils/getProjectsDataFolder");
+const { getProjectsDataFolder } = require("../../../utils/getProjectsDataFolder");
 
 const handleLoadProjects = () => {
   const dataFolderPath = getProjectsDataFolder();

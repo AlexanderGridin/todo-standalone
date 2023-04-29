@@ -1,5 +1,5 @@
 const { writeFileSync, readFileSync } = require("fs");
-const { getProjectsDataFolder } = require("../utils/getProjectsDataFolder");
+const { getProjectsDataFolder } = require("../../../utils/getProjectsDataFolder");
 
 const handleCreateProject = (_e, project) => {
   const fileName = project.fileName;

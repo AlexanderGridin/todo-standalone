@@ -12,7 +12,7 @@
   "license": "ISC",
   "version": "0.1.0",
   "private": true,
-  "main": "public/electron.js",
+  "main": "public/electron/app.js",
   "homepage": "./",
   "browserslist": {
     "production": ["last 1 electron version"],
@@ -45,10 +45,9 @@
     "test": "react-scripts test",
     "electron:dev": "wait-on tcp:3000 && electronmon .",
     "dev": "concurrently -k \"BROWSER=none npm run react:dev\" \"npm run electron:dev\"",
-    "electron:package:mac": "npm run react:build && electron-builder -m -c.extraMetadata.main=build/electron.js",
-    "electron:package:win": "npm run react:build && electron-builder -w -c.extraMetadata.main=build/electron.js",
-    "electron:package:linux": "npm run react:build && electron-builder -l -c.extraMetadata.main=build/electron.js",
-    "epl": "npm run react:build && electron-builder -l -c.extraMetadata.main=build/electron.js",
+    "electron:package:mac": "npm run react:build && electron-builder -m -c.extraMetadata.main=build/electron/app.js",
+    "electron:package:win": "npm run react:build && electron-builder -w -c.extraMetadata.main=build/electron/app.js",
+    "epl": "npm run react:build && electron-builder -l -c.extraMetadata.main=build/electron/app.js",
     "prettier": "npx prettier --write src/* public/*",
     "prettier-check": "npx prettier --check src/* public/*"
   },
