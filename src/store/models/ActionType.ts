@@ -1,0 +1,11 @@
+export const ActionType = {
+  // Modal
+  OPEN_MODAL: "OPEN_MODAL",
+  CLOSE_MODAL: "CLOSE_MODAL",
+  // Project
+  PUSH_PROJECT: "PUSH_PROJECT",
+  REMOVE_PROJECT: "REMOVE_PROJECT",
+  UPDATE_PROJECT: "UPDATE_PROJECT",
+  // Projects
+  SET_PROJECTS: "SET_PROJECTS",
+} as const;

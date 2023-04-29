@@ -1,8 +1,9 @@
 import { Project } from "models";
+import { ActionType } from "../../models";
 
 export const pushProjectAction = (project: Project) => {
   return {
-    type: "PUSH_PROJECT" as const,
+    type: ActionType.PUSH_PROJECT,
     payload: {
       project,
     },

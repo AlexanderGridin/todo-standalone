@@ -1,8 +1,9 @@
 import { Project } from "models";
+import { ActionType } from "../../models";
 
 export const updateProjectAction = (project: Project) => {
   return {
-    type: "UPDATE_PROJECT_ACTION" as const,
+    type: ActionType.UPDATE_PROJECT,
     payload: {
       project,
     },

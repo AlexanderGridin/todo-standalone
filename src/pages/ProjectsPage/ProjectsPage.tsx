@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 import { Page } from "components/Page";
-import { setProjectsAction } from "store/actions";
+import { setProjectsAction } from "store/actions/projects";
 import { useAppState } from "store/hooks";
 import { ProjectsCardsList } from "components/ProjectsCardsList";
 import { getProjectsAsync } from "services";

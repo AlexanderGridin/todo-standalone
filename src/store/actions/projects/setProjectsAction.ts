@@ -1,8 +1,9 @@
 import { Project } from "models";
+import { ActionType } from "../../models";
 
 export const setProjectsAction = (projects: Project[]) => {
   return {
-    type: "SET_PROJECTS" as const,
+    type: ActionType.SET_PROJECTS,
     payload: {
       projects,
     },

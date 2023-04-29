@@ -1,56 +1,33 @@
-import { Project } from "models";
-import { AppAction, AppState } from "./models";
+import { Action, AppState } from "./models";
+import { ActionType } from "./models/ActionType";
+import { closeModalReducer, openModalReducer } from "./reducers/modal";
+import { pushProjectReducer, removeProjectReducer, updateProjectReducer } from "./reducers/project";
+import { setProjectsReducer } from "./reducers/projects";
 
-export const appReducer = (state: AppState, action: AppAction) => {
+export const appReducer = (state: AppState, action: Action) => {
   switch (action.type) {
-    case "SET_PROJECTS":
-      return {
-        ...state,
-        projects: [...action.payload.projects],
-      };
+    // Projects
+    case ActionType.SET_PROJECTS:
+      return setProjectsReducer(state, action);
 
-    case "PUSH_PROJECT":
-      return {
-        ...state,
-        projects: [...state.projects, action.payload.project],
-      };
+    // Project
+    case ActionType.PUSH_PROJECT:
+      return pushProjectReducer(state, action);
 
-    case "REMOVE_PROJECT":
-      return {
-        ...state,
-        projects: state.projects.filter((project: Project) => project.id !== action.payload.project.id),
-      };
+    case ActionType.REMOVE_PROJECT:
+      return removeProjectReducer(state, action);
 
-    case "UPDATE_PROJECT_ACTION":
-      return {
-        ...state,
-        projects: state.projects.map((project: Project) => {
-          return project.id !== action.payload.project.id ? { ...project } : { ...action.payload.project };
-        }),
-      };
+    case ActionType.UPDATE_PROJECT:
+      return updateProjectReducer(state, action);
 
-    case "OPEN_MODAL":
-      return {
-        ...state,
-        modalMap: {
-          ...state.modalMap,
-          [action.payload.modalName]: {
-            isOpen: true,
-          },
-        },
-      };
+    // Modal
+    case ActionType.OPEN_MODAL:
+      return openModalReducer(state, action);
 
-    case "CLOSE_MODAL":
-      return {
-        ...state,
-        modalMap: {
-          ...state.modalMap,
-          [action.payload.modalName]: {
-            isOpen: false,
-          },
-        },
-      };
+    case ActionType.CLOSE_MODAL:
+      return closeModalReducer(state, action);
 
+    // Default
     default:
       return {
         ...state,

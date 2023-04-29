@@ -7,7 +7,7 @@ import ClickAwayListener from "@mui/material/ClickAwayListener";
 import style from "./ProjectCard.module.css";
 import { removeProjectAsync } from "services";
 import { useAppState } from "store/hooks";
-import { removeProjectAction, updateProjectAction } from "store/actions";
+import { removeProjectAction, updateProjectAction } from "store/actions/project";
 import { EditButton } from "components/EditButton";
 import { openModalAction } from "store/actions/modal";
 import { Tooltip } from "@mui/material";
