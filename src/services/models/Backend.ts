@@ -1,6 +1,6 @@
 import { Api } from "./Api";
 
 export type Backend = Window &
-	typeof globalThis & {
-		eAPI: Api;
-	};
+  typeof globalThis & {
+    eAPI: Api;
+  };

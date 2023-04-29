@@ -7,16 +7,14 @@ import { AppContext } from "./AppContext";
 interface AppContextProviderProps extends PropsWithChildren {}
 
 export const AppContextProvider = ({ children }: AppContextProviderProps) => {
-	const [state, dispatch] = useReducer(appReducer, initialState);
-	console.log("AppState:", state);
+  const [state, dispatch] = useReducer(appReducer, initialState);
+  console.log("AppState:", state);
 
-	const providerValue: AppState = {
-		projects: state.projects,
-		modalMap: state.modalMap,
-		dispatch,
-	};
+  const providerValue: AppState = {
+    projects: state.projects,
+    modalMap: state.modalMap,
+    dispatch,
+  };
 
-	return (
-		<AppContext.Provider value={providerValue}>{children}</AppContext.Provider>
-	);
+  return <AppContext.Provider value={providerValue}>{children}</AppContext.Provider>;
 };

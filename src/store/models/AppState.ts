@@ -1,13 +1,13 @@
 import { Dispatch } from "react";
 import { Project } from "models";
-import { AppAction } from "./AppAction";
+import { Action } from "./Action";
 
 export interface AppState {
-	projects: Project[];
-	dispatch: Dispatch<AppAction>;
-	modalMap: {
-		[name: string]: {
-			isOpen: boolean;
-		};
-	};
+  projects: Project[];
+  dispatch: Dispatch<Action>;
+  modalMap: Partial<{
+    [name: string]: {
+      isOpen: boolean;
+    };
+  }>;
 }

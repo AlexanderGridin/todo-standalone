@@ -1,3 +1,3 @@
+export * from "./Action";
 export * from "./AppState";
-export * from "./AppAction";
-export * from "./AppActionType";
+export * from "./ActionType";

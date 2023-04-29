@@ -1,63 +1,56 @@
 import { Modal } from "@alexandergridin/rtc-components-lib";
 import { ProjectForm } from "components/ProjectForm";
-import { Project } from "models";
+import { ModalName, Project } from "models";
 import { createProjectAsync, updateProjectAsync } from "services";
-import { pushProjectAction, updateProjectAction } from "store/actions";
+import { pushProjectAction, updateProjectAction } from "store/actions/project";
 import { closeModalAction } from "store/actions/modal";
 import { useAppState } from "store/hooks";
 
 export const ProjectModal = () => {
-	const state = useAppState();
+  const state = useAppState();
 
-	const isOpen = state.modalMap["ProjectModal"]?.isOpen;
-	const projectInEditState =
-		state.projects.find((project) => project.isEditing) ?? null;
+  const isOpen = state.modalMap[ModalName.ProjectModal]?.isOpen;
+  const projectInEditState = state.projects.find((project) => project.isEditing) ?? null;
 
-	const handleSubmit = async (project: Project) => {
-		if (projectInEditState) {
-			const updatedProject = await updateProjectAsync({
-				...project,
-				isEditing: false,
-			});
+  const closeModal = () => {
+    state.dispatch(closeModalAction(ModalName.ProjectModal));
+  };
 
-			state.dispatch(updateProjectAction(updatedProject));
-			state.dispatch(closeModalAction("ProjectModal"));
+  const handleSubmit = async (project: Project) => {
+    if (projectInEditState) {
+      const updatedProject = await updateProjectAsync({
+        ...project,
+        isEditing: false,
+      });
 
-			return;
-		}
+      state.dispatch(updateProjectAction(updatedProject));
 
-		const createdProject = await createProjectAsync(project);
-		state.dispatch(pushProjectAction(createdProject));
-		state.dispatch(closeModalAction("ProjectModal"));
-	};
+      closeModal();
+      return;
+    }
 
-	const handleCancel = () => {
-		state.dispatch(closeModalAction("ProjectModal"));
+    const createdProject = await createProjectAsync(project);
+    state.dispatch(pushProjectAction(createdProject));
 
-		if (projectInEditState) {
-			state.dispatch(
-				updateProjectAction({
-					...projectInEditState,
-					isEditing: false,
-				})
-			);
-		}
-	};
+    closeModal();
+  };
 
-	if (!isOpen) {
-		return null;
-	}
+  const handleCancel = () => {
+    if (projectInEditState) {
+      state.dispatch(
+        updateProjectAction({
+          ...projectInEditState,
+          isEditing: false,
+        })
+      );
+    }
 
-	return (
-		<Modal
-			title={`${projectInEditState ? "Edit" : "Add"} project`}
-			open={isOpen}
-		>
-			<ProjectForm
-				project={projectInEditState}
-				onSubmit={handleSubmit}
-				onCancel={handleCancel}
-			/>
-		</Modal>
-	);
+    closeModal();
+  };
+
+  return isOpen ? (
+    <Modal title={`${projectInEditState ? "Edit" : "Add"} project`} open={isOpen}>
+      <ProjectForm project={projectInEditState} onSubmit={handleSubmit} onCancel={handleCancel} />
+    </Modal>
+  ) : null;
 };

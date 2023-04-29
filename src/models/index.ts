@@ -1,2 +1,3 @@
 export * from "./Project";
-export * from "./Modal";
+export * from "./ValueOf";
+export * from "./ModalName";
