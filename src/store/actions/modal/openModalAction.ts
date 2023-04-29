@@ -1,6 +1,6 @@
-import { Modal } from "models";
+import { ModalNameType } from "models";
 
-export const openModalAction = (modalName: Modal) => {
+export const openModalAction = (modalName: ModalNameType) => {
   return {
     type: "OPEN_MODAL" as const,
     payload: {

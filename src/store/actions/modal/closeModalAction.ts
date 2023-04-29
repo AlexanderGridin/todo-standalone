@@ -1,6 +1,6 @@
-import { Modal } from "models";
+import { ModalNameType } from "models";
 
-export const closeModalAction = (modalName: Modal) => {
+export const closeModalAction = (modalName: ModalNameType) => {
   return {
     type: "CLOSE_MODAL" as const,
     payload: {

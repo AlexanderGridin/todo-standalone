@@ -1,4 +1,4 @@
-import { Project } from "models";
+import { ModalName, Project } from "models";
 import { ProjectCard } from "components/ProjectCard";
 import { Fab } from "components/Fab";
 import { useAppState } from "store/hooks";
@@ -11,7 +11,7 @@ export const ProjectsCardsList = () => {
   const state = useAppState();
 
   const handleAddProjectButtonClick = () => {
-    state.dispatch(openModalAction("ProjectModal"));
+    state.dispatch(openModalAction(ModalName.ProjectModal));
   };
 
   if (!state.projects.length) {
