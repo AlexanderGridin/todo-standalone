@@ -15,15 +15,15 @@
 	"main": "public/electron.js",
 	"homepage": "./",
 	"browserslist": {
-		"production": [
-			"last 1 electron version"
-		],
-		"development": [
-			"last 1 electron version"
-		]
+		"production": ["last 1 electron version"],
+		"development": ["last 1 electron version"]
 	},
 	"dependencies": {
 		"@alexandergridin/rtc-components-lib": "npm:@AlexanderGridin/rtc-components-lib@^0.0.3",
+		"@emotion/react": "^11.10.6",
+		"@emotion/styled": "^11.10.6",
+		"@mui/icons-material": "^5.11.16",
+		"@mui/material": "^5.12.1",
 		"@testing-library/jest-dom": "^5.16.5",
 		"@testing-library/react": "^13.4.0",
 		"@testing-library/user-event": "^13.5.0",
@@ -32,6 +32,7 @@
 		"@types/react": "^18.0.38",
 		"@types/react-dom": "^18.0.11",
 		"electron-is-dev": "^2.0.0",
+		"nanoid": "^4.0.2",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-scripts": "5.0.1",
@@ -39,10 +40,10 @@
 		"web-vitals": "^2.1.4"
 	},
 	"scripts": {
-		"react:dev": "react-scripts start",
+		"react:dev": "GENERATE_SOURCEMAP=false react-scripts start",
 		"react:build": "react-scripts build",
 		"test": "react-scripts test",
-		"electron:dev": "wait-on tcp:3000 && electron .",
+		"electron:dev": "wait-on tcp:3000 && electronmon .",
 		"dev": "concurrently -k \"BROWSER=none npm run react:dev\" \"npm run electron:dev\"",
 		"electron:package:mac": "npm run react:build && electron-builder -m -c.extraMetadata.main=build/electron.js",
 		"electron:package:win": "npm run react:build && electron-builder -w -c.extraMetadata.main=build/electron.js",
@@ -52,10 +53,7 @@
 	"build": {
 		"appId": "com.electron.myapp",
 		"productName": "Template app",
-		"files": [
-			"build/**/*",
-			"node_modules/**/*"
-		],
+		"files": ["build/**/*", "node_modules/**/*"],
 		"directories": {
 			"buildResources": "public"
 		},
@@ -70,15 +68,13 @@
 		}
 	},
 	"eslintConfig": {
-		"extends": [
-			"react-app",
-			"react-app/jest"
-		]
+		"extends": ["react-app", "react-app/jest"]
 	},
 	"devDependencies": {
 		"concurrently": "^8.0.1",
 		"electron": "^24.1.2",
 		"electron-builder": "^23.6.0",
+		"electronmon": "^2.0.2",
 		"prettier": "^2.8.7",
 		"wait-on": "^7.0.1"
 	}

@@ -8,22 +8,27 @@ body {
 	height: 100%;
 	font-family: "Comfortaa", Arial, sans-serif;
 	position: relative;
-	background-image: url(./assets/GDWP-760-HD-No-Logo.jpg);
+}
+
+body {
+	background-color: #2b313c;
+	/* background-image: url(./assets/GDWP-760-HD-No-Logo.jpg); */
 	background-size: cover;
 	background-position: center;
 }
 
-body::after {
-	content: "";
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 1;
-	background-color: rgba(0, 0, 0, 0.5);
-}
+/* Background overlay */
+/* body::after { */
+/* 	content: ""; */
+/* 	display: block; */
+/* 	position: absolute; */
+/* 	top: 0; */
+/* 	left: 0; */
+/* 	width: 100%; */
+/* 	height: 100%; */
+/* 	z-index: 1; */
+/* 	background-color: rgba(0, 0, 0, 0.5); */
+/* } */
 
 *,
 *::before,
@@ -40,11 +45,16 @@ h6,
 ul {
 	margin: 0;
 	padding: 0;
-	color: #fff;
 }
 
 #root {
 	position: relative;
 	z-index: 2;
 	height: 100%;
+}
+
+.list-plain {
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }

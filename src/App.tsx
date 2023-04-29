@@ -1,11 +1,19 @@
+import { useEffect } from "react";
+
+import { ProjectsPage } from "pages/ProjectsPage";
+import { initAsync } from "services";
+
 function App() {
-	return (
-		<div className="App">
-			<header className="App-header">
-				<h1>Hello from Electron React App!</h1>
-			</header>
-		</div>
-	);
+	const init = async () => {
+		const initMessage = await initAsync();
+		console.log(initMessage);
+	};
+
+	useEffect(() => {
+		init();
+	}, []);
+
+	return <ProjectsPage />;
 }
 
 export default App;
