@@ -4,16 +4,16 @@ import { ProjectsPage } from "pages/ProjectsPage";
 import { initAsync } from "services";
 
 function App() {
-	const init = async () => {
-		const initMessage = await initAsync();
-		console.log(initMessage);
-	};
+  const init = async () => {
+    const initMessage = await initAsync();
+    console.log(initMessage);
+  };
 
-	useEffect(() => {
-		init();
-	}, []);
+  useEffect(() => {
+    init();
+  }, []);
 
-	return <ProjectsPage />;
+  return <ProjectsPage />;
 }
 
 export default App;

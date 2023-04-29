@@ -7,13 +7,13 @@ const { handleRemoveProject } = require("./handlers/handleRemoveProject");
 const { handleUpdateProject } = require("./handlers/handleUpdateProject");
 
 const initCrossProcessCommunication = () => {
-	ipcMain.handle("init", handleInit);
-	ipcMain.handle("loadProjects", handleLoadProjects);
-	ipcMain.handle("createProject", handleCreateProject);
-	ipcMain.handle("removeProject", handleRemoveProject);
-	ipcMain.handle("updateProject", handleUpdateProject);
+  ipcMain.handle("init", handleInit);
+  ipcMain.handle("loadProjects", handleLoadProjects);
+  ipcMain.handle("createProject", handleCreateProject);
+  ipcMain.handle("removeProject", handleRemoveProject);
+  ipcMain.handle("updateProject", handleUpdateProject);
 };
 
 module.exports = {
-	initCrossProcessCommunication,
+  initCrossProcessCommunication,
 };

@@ -1,12 +1,12 @@
 .list {
-	display: flex;
-	align-items: flex-start;
-	justify-content: center;
-	gap: 15px;
-	flex-wrap: wrap;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .listItem {
-	width: 350px;
-	/* user-select: none; */
+  width: 350px;
+  /* user-select: none; */
 }
