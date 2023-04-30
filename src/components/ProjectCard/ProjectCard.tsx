@@ -13,6 +13,7 @@ import { openModalAction } from "store/actions/modal";
 import { Tooltip } from "@mui/material";
 import { useState } from "react";
 import IconButton from "@mui/material/IconButton";
+import { useNavigate } from "react-router-dom";
 
 interface ProjectCardProps {
   project: Project;
@@ -20,6 +21,7 @@ interface ProjectCardProps {
 
 export const ProjectCard = ({ project }: ProjectCardProps) => {
   const state = useAppState();
+  const navigate = useNavigate();
   const [isTooltipOpen, setIsTooltipOpen] = useState(false);
 
   const handleEditClick = () => {
@@ -38,6 +40,10 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
     state.dispatch(removeProjectAction(removedProject));
   };
 
+  const handleDblClick = () => {
+    navigate(`project/${project.id}`);
+  };
+
   const getProjectCreatedDateTime = () => {
     const date = new Date(project.createdTime);
     const [m, d, y] = date.toLocaleDateString().split("/");
@@ -46,7 +52,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
   };
 
   return (
-    <Card minHeight={150}>
+    <Card minHeight={150} onDoubleClick={handleDblClick} className={style.card}>
       <div className={style.header}>
         <h2 style={{ color: "#000" }}>{project.name}</h2>
 

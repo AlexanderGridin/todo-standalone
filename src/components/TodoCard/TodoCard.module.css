@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.title {
+  max-width: 750px;
+  width: 100%;
+  margin-left: 25px;
+}
+
+.completed {
+  opacity: 0.5;
+  text-decoration: line-through;
+}

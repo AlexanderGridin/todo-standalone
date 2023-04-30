@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
-import { ProjectsPage } from "pages/ProjectsPage";
 import { initAsync } from "services";
+import { Outlet } from "react-router-dom";
 
-function App() {
+export const App = () => {
   const [isInit, setIsInit] = useState(false);
 
   const init = async () => {
@@ -16,7 +16,5 @@ function App() {
     init();
   }, []);
 
-  return isInit ? <ProjectsPage /> : null;
-}
-
-export default App;
+  return isInit ? <Outlet /> : null;
+};
