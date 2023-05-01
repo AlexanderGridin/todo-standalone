@@ -29,12 +29,10 @@ export const TodoCard = ({ todo }: TodoCardProps) => {
   };
 
   const handleStartClick = () => {
-    console.log("start todo");
     state.dispatch(setInProgressTodoAction({ ...todo, isInProgress: true }));
   };
 
   const handleStopClick = () => {
-    console.log("stop todo");
     state.dispatch(setInProgressTodoAction(null));
   };
 
