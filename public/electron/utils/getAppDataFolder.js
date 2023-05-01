@@ -1,7 +1,8 @@
 const { homedir } = require("os");
+const isDev = require("electron-is-dev");
 
 const getAppDataFolder = () => {
-  return `${homedir()}/Documents/TodoAppData`;
+  return isDev ? `${homedir()}/Documents/TodoAppData--DEV` : `${homedir()}/Documents/TodoAppData`;
 };
 
 module.exports = {

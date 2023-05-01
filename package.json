@@ -1,6 +1,6 @@
 {
-  "name": "react-electron-template",
-  "description": "Template app",
+  "name": "todo",
+  "description": "Todo",
   "author": {
     "name": "Oleksandr Hridin",
     "email": "oleksandr.hridin@gmail.com"
@@ -10,17 +10,13 @@
     "node": ">=18.13.0"
   },
   "license": "ISC",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "main": "public/electron/app.js",
   "homepage": "./",
   "browserslist": {
-    "production": [
-      "last 1 electron version"
-    ],
-    "development": [
-      "last 1 electron version"
-    ]
+    "production": ["last 1 electron version"],
+    "development": ["last 1 electron version"]
   },
   "dependencies": {
     "@alexandergridin/rtc-components-lib": "npm:@AlexanderGridin/rtc-components-lib@^0.0.3",
@@ -51,18 +47,15 @@
     "electron:dev": "wait-on tcp:3000 && electronmon .",
     "dev": "concurrently -k \"BROWSER=none npm run react:dev\" \"npm run electron:dev\"",
     "electron:package:mac": "npm run react:build && electron-builder -m -c.extraMetadata.main=build/electron/app.js",
-    "electron:package:win": "npm run react:build && electron-builder -w -c.extraMetadata.main=build/electron/app.js",
+    "epw": "npm run react:build && electron-builder -w -c.extraMetadata.main=build/electron/app.js",
     "epl": "npm run react:build && electron-builder -l -c.extraMetadata.main=build/electron/app.js",
     "prettier": "npx prettier --write src/* public/*",
     "prettier-check": "npx prettier --check src/* public/*"
   },
   "build": {
     "appId": "com.electron.myapp",
-    "productName": "Template app",
-    "files": [
-      "build/**/*",
-      "node_modules/**/*"
-    ],
+    "productName": "Todo",
+    "files": ["build/**/*", "node_modules/**/*"],
     "directories": {
       "buildResources": "public"
     },
@@ -77,10 +70,7 @@
     }
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": ["react-app", "react-app/jest"]
   },
   "devDependencies": {
     "concurrently": "^8.0.1",

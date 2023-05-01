@@ -1,4 +1,5 @@
 import { generateId } from "utils";
+import { TodoItem } from "./TodoItem";
 
 export class Project {
   public id: string = generateId();
@@ -8,4 +9,5 @@ export class Project {
   public completedTodos: any[] = [];
   public createdTime!: number;
   public isEditing = false;
+  public inProgressTodo: TodoItem | null = null;
 }

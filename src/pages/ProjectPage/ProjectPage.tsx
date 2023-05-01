@@ -6,20 +6,24 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { useEffect, useState } from "react";
-import { loadProjectAsync } from "services";
-import { Project, TodoItem } from "models";
+import { useEffect } from "react";
+import { loadProjectAsync, updateProjectAsync } from "services";
+import { useAppState } from "store/hooks";
+import { setOpenedProjectAction } from "store/actions/openedProject";
+import { TodoCard } from "components/TodoCard";
 
 export const ProjectPage = () => {
-  const [project, setProject] = useState<Project | null>(null);
+  const state = useAppState();
+  const project = state.openedProject;
+
   const navigate = useNavigate();
   const { id } = useParams();
 
   const loadProject = async () => {
-    const loadedProject = await loadProjectAsync(id as string);
+    const project = await loadProjectAsync(id ?? "");
 
-    if (loadedProject) {
-      setProject(loadedProject);
+    if (project) {
+      state.dispatch(setOpenedProjectAction({ ...project }));
     }
   };
 
@@ -28,8 +32,23 @@ export const ProjectPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const updateProject = async () => {
+    if (!project) {
+      return;
+    }
+
+    await updateProjectAsync(project);
+  };
+
+  useEffect(() => {
+    updateProject();
+    console.log("Update project effect");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [project]);
+
   const handleBackClick = () => {
-    navigate("/");
+    state.dispatch(setOpenedProjectAction(null));
+    navigate(-1);
   };
 
   const subHeader = (
@@ -43,11 +62,26 @@ export const ProjectPage = () => {
   return project ? (
     <Page title={project.name}>
       {subHeader}
-      <TodoCardsList todos={[...project.activeTodos, { ...new TodoItem(), title: "Test" }]} />
+
+      {project.inProgressTodo ? (
+        <div style={{ marginBottom: "25px" }}>
+          <TodoCard todo={project.inProgressTodo} />
+        </div>
+      ) : null}
+
+      <div
+        style={{
+          marginBottom: "25px",
+          opacity: `${project.inProgressTodo ? "0.5" : "1"}`,
+          pointerEvents: `${project.inProgressTodo ? "none" : "all"}`,
+        }}
+      >
+        <TodoCardsList todos={project.activeTodos} />
+      </div>
 
       {project.completedTodos.length !== 0 && (
-        <Accordion>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        <Accordion sx={{ backgroundColor: "#a3be8c", color: "#000" }}>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />} sx={{ padding: "7px 25px" }}>
             <h2>Completed todos</h2>
           </AccordionSummary>
 

@@ -9,7 +9,7 @@ import { useAppState } from "store/hooks";
 export const ProjectModal = () => {
   const state = useAppState();
 
-  const isOpen = state.modalMap[ModalName.ProjectModal]?.isOpen;
+  const isOpen = state.modalMap[ModalName.ProjectModal]?.isOpen ?? false;
   const projectInEditState = state.projects.find((project) => project.isEditing) ?? null;
 
   const closeModal = () => {
