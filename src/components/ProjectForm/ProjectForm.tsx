@@ -17,7 +17,7 @@ interface ProjectFormProps {
 export const ProjectForm = ({ project, onSubmit, onCancel }: ProjectFormProps) => {
   const initialValue = project ? { name: project.name } : { ...new ProjectFormValue() };
 
-  const [formValue, setControlValue] = useReducer(
+  const [formValue, setFormValue] = useReducer(
     (formValue: ProjectFormValue, controlValue: Partial<ProjectFormValue>) => ({
       ...formValue,
       ...controlValue,
@@ -57,7 +57,7 @@ export const ProjectForm = ({ project, onSubmit, onCancel }: ProjectFormProps) =
   };
 
   const handleFormValueChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setControlValue({ [e.target.name]: e.target.value });
+    setFormValue({ [e.target.name]: e.target.value });
   };
 
   return (

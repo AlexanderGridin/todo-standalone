@@ -14,6 +14,7 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
     projects: state.projects,
     modalMap: state.modalMap,
     dispatch,
+    openedProject: state.openedProject,
   };
 
   return <AppContext.Provider value={providerValue}>{children}</AppContext.Provider>;

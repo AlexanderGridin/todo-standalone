@@ -1,6 +1,6 @@
 {
-  "name": "react-electron-template",
-  "description": "Template app",
+  "name": "todo",
+  "description": "Todo",
   "author": {
     "name": "Oleksandr Hridin",
     "email": "oleksandr.hridin@gmail.com"
@@ -10,7 +10,7 @@
     "node": ">=18.13.0"
   },
   "license": "ISC",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "main": "public/electron/app.js",
   "homepage": "./",
@@ -35,6 +35,7 @@
     "nanoid": "^4.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.11.0",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
@@ -46,14 +47,14 @@
     "electron:dev": "wait-on tcp:3000 && electronmon .",
     "dev": "concurrently -k \"BROWSER=none npm run react:dev\" \"npm run electron:dev\"",
     "electron:package:mac": "npm run react:build && electron-builder -m -c.extraMetadata.main=build/electron/app.js",
-    "electron:package:win": "npm run react:build && electron-builder -w -c.extraMetadata.main=build/electron/app.js",
+    "epw": "npm run react:build && electron-builder -w -c.extraMetadata.main=build/electron/app.js",
     "epl": "npm run react:build && electron-builder -l -c.extraMetadata.main=build/electron/app.js",
     "prettier": "npx prettier --write src/* public/*",
     "prettier-check": "npx prettier --check src/* public/*"
   },
   "build": {
     "appId": "com.electron.myapp",
-    "productName": "Template app",
+    "productName": "Todo",
     "files": ["build/**/*", "node_modules/**/*"],
     "directories": {
       "buildResources": "public"

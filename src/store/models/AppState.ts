@@ -10,4 +10,5 @@ export interface AppState {
       isOpen: boolean;
     };
   }>;
+  openedProject: Project | null;
 }
