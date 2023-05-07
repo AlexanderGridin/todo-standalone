@@ -7,6 +7,6 @@
 }
 
 .listItem {
-  width: 350px;
-  /* user-select: none; */
+  max-width: 420px;
+  width: 100%;
 }

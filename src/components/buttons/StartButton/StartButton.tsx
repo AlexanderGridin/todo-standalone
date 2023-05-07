@@ -9,7 +9,7 @@ export interface StartButtonProps {
 
 export const StartButton = ({ tooltipText = "", onClick }: StartButtonProps) => {
   return (
-    <Tooltip title={tooltipText}>
+    <Tooltip title={tooltipText && <span style={{ fontFamily: "Comfortaa" }}>{tooltipText}</span>}>
       <IconButton size="large" onClick={onClick}>
         <PlayIcon />
       </IconButton>

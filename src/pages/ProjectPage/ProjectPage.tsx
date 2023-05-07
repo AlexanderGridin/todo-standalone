@@ -1,4 +1,3 @@
-import { Button } from "@alexandergridin/rtc-components-lib";
 import { Page } from "components/Page";
 import { TodoCardsList, TodoCard } from "components/todo";
 import { useNavigate, useParams } from "react-router-dom";
@@ -45,23 +44,17 @@ export const ProjectPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [project]);
 
-  const handleBackClick = () => {
+  const handleCloseClick = () => {
     state.dispatch(setOpenedProjectAction(null));
     navigate(-1);
   };
 
-  const subHeader = (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <div style={{ marginBottom: "25px" }}>
-        <Button onClick={handleBackClick}>Back</Button>
-      </div>
-    </div>
-  );
+  if (!project) {
+    return <Page title="Project not found..." onClose={handleCloseClick} />;
+  }
 
-  return project ? (
-    <Page title={project.name}>
-      {subHeader}
-
+  return (
+    <Page title={project.name} onClose={handleCloseClick}>
       {project.inProgressTodo ? (
         <div style={{ marginBottom: "25px" }}>
           <TodoCard todo={project.inProgressTodo} />
@@ -90,7 +83,5 @@ export const ProjectPage = () => {
         </Accordion>
       )}
     </Page>
-  ) : (
-    <Page title="Project not found...">{subHeader}</Page>
   );
 };

@@ -49,29 +49,31 @@ export const TodoCard = ({ todo }: TodoCardProps) => {
   };
 
   return (
-    <Card
-      className={`${todo.isCompleted ? style.completed : ""}`}
-      backgroundColor={`${todo.isInProgress ? "#ebcb8b" : "#FFF"}`}
-    >
-      <div className={style.container}>
-        <div>
-          <Checkbox checked={todo.isCompleted} onChange={handleIsCompletedChange} />
+    <div className={`${todo.isInProgress ? style.wrapper : ""}`}>
+      <Card
+        className={`${todo.isCompleted ? style.completed : style.card} ${todo.isInProgress ? style.focused : ""}`}
+        backgroundColor={`${todo.isInProgress ? "#ebcb8b" : "#FFF"}`}
+      >
+        <div className={style.container}>
+          <div>
+            <Checkbox checked={todo.isCompleted} onChange={handleIsCompletedChange} />
+          </div>
+
+          <h2 className={style.title}>{todo.title}</h2>
+
+          <div style={{ marginLeft: "auto" }}>
+            {todo.isCompleted ? null : todo.isInProgress ? (
+              <StopButton tooltipText="Stop focusing on this todo" onClick={handleStopClick} />
+            ) : (
+              <StartButton tooltipText="Focus on this todo" onClick={handleStartClick} />
+            )}
+
+            {todo.isCompleted ? null : <EditButton tooltipText="Edit todo" onClick={handleEditClick} />}
+
+            <DeleteButton tooltipText="Delete todo" onClick={handleDeleteClick} />
+          </div>
         </div>
-
-        <h2 className={style.title}>{todo.title}</h2>
-
-        <div style={{ marginLeft: "auto" }}>
-          {todo.isCompleted ? null : todo.isInProgress ? (
-            <StopButton tooltipText="Stop focusing on this todo" onClick={handleStopClick} />
-          ) : (
-            <StartButton tooltipText="Focus on this todo" onClick={handleStartClick} />
-          )}
-
-          {todo.isCompleted ? null : <EditButton tooltipText="Edit todo" onClick={handleEditClick} />}
-
-          <DeleteButton tooltipText="Delete todo" onClick={handleDeleteClick} />
-        </div>
-      </div>
-    </Card>
+      </Card>
+    </div>
   );
 };
