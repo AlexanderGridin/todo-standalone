@@ -6,11 +6,8 @@ import style from "./TodoCard.module.css";
 import { ChangeEvent } from "react";
 import { useAppState } from "store/hooks";
 import { removeTodoAction, setInProgressTodoAction, updateTodoAction } from "store/actions/todo";
-import { DeleteButton } from "components/DeleteButton";
-import { EditButton } from "components/EditButton";
+import { DeleteButton, EditButton, StartButton, StopButton } from "components/buttons";
 import { openModalAction } from "store/actions/modal";
-import { StartButton } from "components/StartButton";
-import { StopButton } from "components/StopButton";
 
 export interface TodoCardProps {
   todo: TodoItem;

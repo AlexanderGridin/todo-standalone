@@ -1,10 +1,11 @@
 import { Modal } from "@alexandergridin/rtc-components-lib";
-import { ProjectForm } from "components/ProjectForm";
 import { ModalName, Project } from "models";
 import { createProjectAsync, updateProjectAsync } from "services";
 import { pushProjectAction, updateProjectAction } from "store/actions/project";
 import { closeModalAction } from "store/actions/modal";
 import { useAppState } from "store/hooks";
+
+import { ProjectForm } from "../ProjectForm";
 
 export const ProjectModal = () => {
   const state = useAppState();

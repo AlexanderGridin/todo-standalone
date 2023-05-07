@@ -1,6 +1,6 @@
 import { Button } from "@alexandergridin/rtc-components-lib";
 import { Page } from "components/Page";
-import { TodoCardsList } from "components/TodoCardsList";
+import { TodoCardsList, TodoCard } from "components/todo";
 import { useNavigate, useParams } from "react-router-dom";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -10,7 +10,6 @@ import { useEffect } from "react";
 import { loadProjectAsync, updateProjectAsync } from "services";
 import { useAppState } from "store/hooks";
 import { setOpenedProjectAction } from "store/actions/openedProject";
-import { TodoCard } from "components/TodoCard";
 
 export const ProjectPage = () => {
   const state = useAppState();

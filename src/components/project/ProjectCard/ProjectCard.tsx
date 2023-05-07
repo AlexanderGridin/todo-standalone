@@ -1,4 +1,3 @@
-import { DeleteButton } from "components/DeleteButton";
 import { Card } from "@alexandergridin/rtc-components-lib";
 import { ModalName, Project } from "models";
 import InfoIcon from "@mui/icons-material/Info";
@@ -8,7 +7,7 @@ import style from "./ProjectCard.module.css";
 import { removeProjectAsync } from "services";
 import { useAppState } from "store/hooks";
 import { removeProjectAction, updateProjectAction } from "store/actions/project";
-import { EditButton } from "components/EditButton";
+import { EditButton, DeleteButton } from "components/buttons";
 import { openModalAction } from "store/actions/modal";
 import { Tooltip } from "@mui/material";
 import { useState } from "react";

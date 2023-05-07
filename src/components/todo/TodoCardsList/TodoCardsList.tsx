@@ -1,9 +1,10 @@
-import { Fab } from "components/Fab";
-import { TodoCard } from "components/TodoCard";
-import { TodoModal } from "components/TodoModal";
+import { Fab } from "components/buttons";
 import { ModalName, TodoItem } from "models";
 import { openModalAction } from "store/actions/modal";
 import { useAppState } from "store/hooks";
+
+import { TodoCard } from "../TodoCard";
+import { TodoModal } from "../TodoModal";
 
 import style from "./TodoCardsList.module.css";
 

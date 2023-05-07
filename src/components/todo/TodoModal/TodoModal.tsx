@@ -1,9 +1,10 @@
 import { Modal } from "@alexandergridin/rtc-components-lib";
-import { TodoForm } from "components/TodoForm";
 import { ModalName, TodoItem } from "models";
 import { closeModalAction } from "store/actions/modal";
 import { pushTodoAction, updateTodoAction } from "store/actions/todo";
 import { useAppState } from "store/hooks";
+
+import { TodoForm } from "../TodoForm";
 
 export const TodoModal = () => {
   const state = useAppState();

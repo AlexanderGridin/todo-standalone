@@ -1,9 +1,10 @@
 import { ModalName, Project } from "models";
-import { ProjectCard } from "components/ProjectCard";
-import { Fab } from "components/Fab";
+import { Fab } from "components/buttons";
 import { useAppState } from "store/hooks";
-import { ProjectModal } from "components/ProjectModal";
 import { openModalAction } from "store/actions/modal";
+
+import { ProjectCard } from "../ProjectCard";
+import { ProjectModal } from "../ProjectModal";
 
 import style from "./ProjectsCardsList.module.css";
 
