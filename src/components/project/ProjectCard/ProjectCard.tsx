@@ -55,6 +55,18 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
         </div>
       </div>
 
+      <div className={style.todosInfo}>
+        <div className={style.todosInfoActive}>
+          <b className={style.todosInfoLabel}>Active todos: </b>
+          {project.inProgressTodo ? project.activeTodos.length + 1 : project.activeTodos.length}
+        </div>
+
+        <div className={style.todosInfoCompleted}>
+          <b className={style.todosInfoLabel}>Completed todos: </b>
+          {project.completedTodos.length}
+        </div>
+      </div>
+
       <div className={style.created}>
         <ClickAwayListener onClickAway={() => setIsTooltipOpen(false)}>
           <div>

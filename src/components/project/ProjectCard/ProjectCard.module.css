@@ -15,6 +15,35 @@
   align-items: center;
 }
 
+.todosInfo {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 14px;
+}
+
+.todosInfoLabel {
+  max-width: 135px;
+  width: 100%;
+  display: inline-block;
+  margin-right: 7px;
+}
+
+.todosInfoActive,
+.todosInfoCompleted {
+  display: flex;
+  align-items: center;
+}
+
+.todosInfoActive {
+  color: #bf616a;
+  margin-bottom: 5px;
+}
+
+.todosInfoCompleted {
+  color: #a3be8c;
+}
+
 .created {
   position: absolute;
   bottom: 10px;
