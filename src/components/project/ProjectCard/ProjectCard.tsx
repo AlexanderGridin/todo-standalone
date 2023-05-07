@@ -1,6 +1,5 @@
-import { DeleteButton } from "components/DeleteButton";
 import { Card } from "@alexandergridin/rtc-components-lib";
-import { Project } from "models";
+import { ModalName, Project } from "models";
 import InfoIcon from "@mui/icons-material/Info";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 
@@ -8,12 +7,13 @@ import style from "./ProjectCard.module.css";
 import { removeProjectAsync } from "services";
 import { useAppState } from "store/hooks";
 import { removeProjectAction, updateProjectAction } from "store/actions/project";
-import { EditButton } from "components/EditButton";
+import { EditButton, DeleteButton } from "components/buttons";
 import { openModalAction } from "store/actions/modal";
 import { Tooltip } from "@mui/material";
 import { useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import { useNavigate } from "react-router-dom";
+import { getProjectCreatedDateTime } from "utils";
 
 interface ProjectCardProps {
   project: Project;
@@ -32,7 +32,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
       })
     );
 
-    state.dispatch(openModalAction("ProjectModal"));
+    state.dispatch(openModalAction(ModalName.ProjectModal));
   };
 
   const handleDeleteClick = async () => {
@@ -42,13 +42,6 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
 
   const handleDblClick = () => {
     navigate(`project/${project.id}`);
-  };
-
-  const getProjectCreatedDateTime = () => {
-    const date = new Date(project.createdTime);
-    const [m, d, y] = date.toLocaleDateString().split("/");
-    const time = `${date.getHours()}:${date.getMinutes()}`;
-    return `${d}.${Number(m) < 10 ? "0" + m : m}.${y} ${time}`;
   };
 
   return (
@@ -74,7 +67,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
                     <strong>
                       <u>Created:</u>{" "}
                     </strong>
-                    <span>{getProjectCreatedDateTime()}</span>
+                    <span>{getProjectCreatedDateTime(project)}</span>
                   </div>
 
                   <div>

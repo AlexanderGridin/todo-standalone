@@ -8,7 +8,7 @@ export const removeTodoReducer = (state: AppState, action: RemoveTodoAction) => 
     };
   }
 
-  const todoToRemove = action.payload.todo;
+  const todoToRemove = { ...action.payload.todo };
 
   if (todoToRemove.isInProgress) {
     return {

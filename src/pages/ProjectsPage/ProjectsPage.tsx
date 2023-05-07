@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Page } from "components/Page";
 import { setProjectsAction } from "store/actions/projects";
 import { useAppState } from "store/hooks";
-import { ProjectsCardsList } from "components/ProjectsCardsList";
+import { ProjectsCardsList } from "components/project";
 import { getProjectsAsync } from "services";
 
 export const ProjectsPage = () => {
