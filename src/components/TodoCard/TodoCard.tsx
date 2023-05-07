@@ -48,7 +48,7 @@ export const TodoCard = ({ todo }: TodoCardProps) => {
   };
 
   const handleDeleteClick = () => {
-    state.dispatch(removeTodoAction({ ...todo }));
+    state.dispatch(removeTodoAction(todo));
   };
 
   return (

@@ -1,6 +1,6 @@
-import { TodoItem } from "models";
 import { UpdateTodoAction } from "store/actions/todo";
 import { AppState } from "store/models";
+import { parseTodos } from "utils";
 
 export const updateTodoReducer = (state: AppState, action: UpdateTodoAction) => {
   if (!state.openedProject) {
@@ -9,45 +9,40 @@ export const updateTodoReducer = (state: AppState, action: UpdateTodoAction) => 
     };
   }
 
-  if (action.payload.todo.isInProgress) {
-    if (action.payload.todo.isCompleted) {
-      return {
-        ...state,
-        openedProject: {
-          ...state.openedProject,
-          inProgressTodo: null,
-          completedTodos: [{ ...action.payload.todo, isInProgress: false }, ...state.openedProject.completedTodos],
-        },
-      };
-    }
+  const todoToUpdate = { ...action.payload.todo };
+
+  if (!todoToUpdate.isInProgress) {
+    const todos = [...state.openedProject.activeTodos, ...state.openedProject.completedTodos];
+    const updatedTodos = todos.map((todo) => (todo.id === todoToUpdate.id ? todoToUpdate : todo));
+
+    const { activeTodos, completedTodos } = parseTodos(updatedTodos);
 
     return {
       ...state,
       openedProject: {
         ...state.openedProject,
-        inProgressTodo: {
-          ...action.payload.todo,
-        },
+        activeTodos,
+        completedTodos,
       },
     };
   }
 
-  const todos = [...state.openedProject.activeTodos, ...state.openedProject.completedTodos];
-  const updatedTodos = todos.map((todo) =>
-    todo.id === action.payload.todo.id ? { ...action.payload.todo } : { ...todo }
-  );
-
-  const activeTodos: TodoItem[] = [];
-  const completedTodos: TodoItem[] = [];
-
-  updatedTodos.forEach((todo: TodoItem) => (todo.isCompleted ? completedTodos.push(todo) : activeTodos.push(todo)));
+  if (todoToUpdate.isCompleted) {
+    return {
+      ...state,
+      openedProject: {
+        ...state.openedProject,
+        inProgressTodo: null,
+        completedTodos: [{ ...todoToUpdate, isInProgress: false }, ...state.openedProject.completedTodos],
+      },
+    };
+  }
 
   return {
     ...state,
     openedProject: {
       ...state.openedProject,
-      activeTodos,
-      completedTodos,
+      inProgressTodo: todoToUpdate,
     },
   };
 };

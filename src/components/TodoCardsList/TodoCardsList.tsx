@@ -26,7 +26,19 @@ export const TodoCardsList = ({ todos, isShowAddButton = true }: TodoCardsListPr
     </>
   );
 
-  return todos.length ? (
+  if (!todos.length) {
+    return (
+      <>
+        {!state.openedProject?.inProgressTodo ? (
+          <h2 style={{ color: "#FFF", textAlign: "center" }}>You don't have any active todos...</h2>
+        ) : null}
+
+        {isShowAddButton && footer}
+      </>
+    );
+  }
+
+  return (
     <>
       <ul className={`list-plain ${style.list}`}>
         {todos.map((todo) => (
@@ -35,14 +47,6 @@ export const TodoCardsList = ({ todos, isShowAddButton = true }: TodoCardsListPr
           </li>
         ))}
       </ul>
-
-      {isShowAddButton && footer}
-    </>
-  ) : (
-    <>
-      {!state.openedProject?.inProgressTodo && (
-        <h2 style={{ color: "#FFF", textAlign: "center" }}>You don't have any active todos...</h2>
-      )}
 
       {isShowAddButton && footer}
     </>

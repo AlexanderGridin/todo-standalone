@@ -8,13 +8,14 @@ export const pushTodoReducer = (state: AppState, action: PushTodoAction) => {
     };
   }
 
-  const todo = action.payload.todo;
+  const todo = { ...action.payload.todo };
+  const activeTodos = [...(state.openedProject?.activeTodos ?? [])];
 
   return {
     ...state,
     openedProject: {
       ...state.openedProject,
-      activeTodos: [...(state.openedProject?.activeTodos ?? []), { ...todo }],
+      activeTodos: [...activeTodos, todo],
     },
   };
 };

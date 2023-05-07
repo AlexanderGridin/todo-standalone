@@ -28,16 +28,12 @@ export const TodoForm = ({ todo, onSubmit, onCancel }: TodoFormProps) => {
   const handleSubmit = (e?: FormEvent<HTMLFormElement>) => {
     e?.preventDefault();
 
-    if (todo) {
-      onSubmit({
-        ...todo,
-        ...formValue,
-      });
-
-      return;
-    }
-
-    onSubmit({ ...new TodoItem(), ...formValue });
+    todo
+      ? onSubmit({
+          ...todo,
+          ...formValue,
+        })
+      : onSubmit({ ...new TodoItem(), ...formValue });
   };
 
   const handleCancelClick = () => {

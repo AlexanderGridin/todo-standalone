@@ -14,13 +14,18 @@ export const ProjectsCardsList = () => {
     state.dispatch(openModalAction(ModalName.ProjectModal));
   };
 
+  const footer = (
+    <>
+      <Fab tooltipText="Add project" onClick={handleAddProjectButtonClick} />
+      <ProjectModal />
+    </>
+  );
+
   if (!state.projects.length) {
     return (
       <>
         <h2 style={{ color: "#FFF", textAlign: "center" }}>You don't have any projects...</h2>
-
-        <Fab tooltipText="Add project" onClick={handleAddProjectButtonClick} />
-        <ProjectModal />
+        {footer}
       </>
     );
   }
@@ -37,8 +42,7 @@ export const ProjectsCardsList = () => {
         })}
       </ul>
 
-      <Fab tooltipText="Add project" onClick={handleAddProjectButtonClick} />
-      <ProjectModal />
+      {footer}
     </>
   );
 };
