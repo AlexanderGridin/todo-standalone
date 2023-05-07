@@ -9,7 +9,7 @@ export interface EditButtonProps {
 
 export const EditButton = ({ tooltipText = "", onClick }: EditButtonProps) => {
   return (
-    <Tooltip title={tooltipText}>
+    <Tooltip title={tooltipText && <span style={{ fontFamily: "Comfortaa" }}>{tooltipText}</span>}>
       <IconButton aria-label="edit" size="large" onClick={onClick}>
         <EditIcon />
       </IconButton>

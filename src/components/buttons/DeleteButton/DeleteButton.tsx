@@ -9,7 +9,7 @@ export interface DeleteButtonProps {
 
 export const DeleteButton = ({ tooltipText = "", onClick }: DeleteButtonProps) => {
   return (
-    <Tooltip title={tooltipText}>
+    <Tooltip title={tooltipText && <span style={{ fontFamily: "Comfortaa" }}>{tooltipText}</span>}>
       <IconButton aria-label="delete" size="large" onClick={onClick}>
         <DeleteIcon />
       </IconButton>

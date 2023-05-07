@@ -1,12 +1,14 @@
 .card {
   user-select: none;
-  transition: all 0.4s;
+  transition: transform 0.4s;
+  position: relative;
 }
 
 .card:hover {
-  box-shadow: 0 0 15px rgba(0, 0, 0, 1);
-  background-color: #ebcb8b;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
   cursor: pointer;
+  transform: scale(1.1);
+  z-index: 2;
 }
 
 .header {

@@ -45,63 +45,67 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
   };
 
   return (
-    <Card minHeight={150} onDoubleClick={handleDblClick} className={style.card}>
-      <div className={style.header}>
-        <h2 style={{ color: "#000" }}>{project.name}</h2>
+    <Tooltip title={<span style={{ fontFamily: "Comfortaa" }}>Double click to open</span>} placement="bottom" arrow>
+      <div>
+        <Card minHeight={150} onDoubleClick={handleDblClick} className={style.card}>
+          <div className={style.header}>
+            <h2 style={{ color: "#000" }}>{project.name}</h2>
 
-        <div>
-          <EditButton tooltipText="Edit project" onClick={handleEditClick} />
-          <DeleteButton tooltipText="Delete project" onClick={handleDeleteClick} />
-        </div>
-      </div>
-
-      <div className={style.todosInfo}>
-        <div className={style.todosInfoActive}>
-          <b className={style.todosInfoLabel}>Active todos: </b>
-          {project.inProgressTodo ? project.activeTodos.length + 1 : project.activeTodos.length}
-        </div>
-
-        <div className={style.todosInfoCompleted}>
-          <b className={style.todosInfoLabel}>Completed todos: </b>
-          {project.completedTodos.length}
-        </div>
-      </div>
-
-      <div className={style.created}>
-        <ClickAwayListener onClickAway={() => setIsTooltipOpen(false)}>
-          <div>
-            <Tooltip
-              placement="top"
-              arrow
-              title={
-                <div style={{ padding: "7px" }}>
-                  <div style={{ marginBottom: "7px" }}>
-                    <strong>
-                      <u>Created:</u>{" "}
-                    </strong>
-                    <span>{getProjectCreatedDateTime(project)}</span>
-                  </div>
-
-                  <div>
-                    <strong>
-                      <u>File:</u>{" "}
-                    </strong>
-                    <span>{project.fileName}</span>
-                  </div>
-                </div>
-              }
-              open={isTooltipOpen}
-              disableFocusListener
-              disableHoverListener
-              disableTouchListener
-            >
-              <IconButton aria-label="edit" size="large" onClick={() => setIsTooltipOpen(true)}>
-                <InfoIcon />
-              </IconButton>
-            </Tooltip>
+            <div>
+              <EditButton tooltipText="Edit project" onClick={handleEditClick} />
+              <DeleteButton tooltipText="Delete project" onClick={handleDeleteClick} />
+            </div>
           </div>
-        </ClickAwayListener>
+
+          <div className={style.todosInfo}>
+            <div className={style.todosInfoActive}>
+              <b className={style.todosInfoLabel}>Active todos: </b>
+              {project.inProgressTodo ? project.activeTodos.length + 1 : project.activeTodos.length}
+            </div>
+
+            <div className={style.todosInfoCompleted}>
+              <b className={style.todosInfoLabel}>Completed todos: </b>
+              {project.completedTodos.length}
+            </div>
+          </div>
+
+          <div className={style.created}>
+            <ClickAwayListener onClickAway={() => setIsTooltipOpen(false)}>
+              <div>
+                <Tooltip
+                  placement="top"
+                  arrow
+                  title={
+                    <div style={{ padding: "7px", fontFamily: "Comfortaa" }}>
+                      <div style={{ marginBottom: "7px", display: "flex" }}>
+                        <strong style={{ width: "70px", display: "inline-block" }}>
+                          <u>Created: </u>
+                        </strong>
+                        <span>{getProjectCreatedDateTime(project)}</span>
+                      </div>
+
+                      <div style={{ display: "flex" }}>
+                        <strong style={{ width: "70px", display: "inline-block" }}>
+                          <u>File: </u>
+                        </strong>
+                        <span>{project.fileName}</span>
+                      </div>
+                    </div>
+                  }
+                  open={isTooltipOpen}
+                  disableFocusListener
+                  disableHoverListener
+                  disableTouchListener
+                >
+                  <IconButton aria-label="edit" size="large" onClick={() => setIsTooltipOpen(true)}>
+                    <InfoIcon />
+                  </IconButton>
+                </Tooltip>
+              </div>
+            </ClickAwayListener>
+          </div>
+        </Card>
       </div>
-    </Card>
+    </Tooltip>
   );
 };

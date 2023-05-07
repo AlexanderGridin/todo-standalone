@@ -58,3 +58,16 @@ ul {
   padding: 0;
   list-style: none;
 }
+
+.page-title {
+  text-transform: uppercase;
+  font-size: 32px;
+  color: #fff;
+  text-align: center;
+}
+
+.container {
+  max-width: 1170px;
+  width: 100%;
+  margin: auto;
+}

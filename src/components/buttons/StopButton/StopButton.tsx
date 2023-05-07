@@ -9,7 +9,7 @@ export interface StopButtonProps {
 
 export const StopButton = ({ tooltipText = "", onClick }: StopButtonProps) => {
   return (
-    <Tooltip title={tooltipText}>
+    <Tooltip title={tooltipText && <span style={{ fontFamily: "Comfortaa" }}>{tooltipText}</span>}>
       <IconButton size="large" onClick={onClick}>
         <StopIcon />
       </IconButton>
